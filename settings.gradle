@@ -1,0 +1,3 @@
+include ':smartadapter'
+include ':app'
+rootProject.name = "FivesoftAdapterDemoApp"
