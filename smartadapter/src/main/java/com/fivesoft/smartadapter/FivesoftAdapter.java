@@ -156,8 +156,8 @@ public class FivesoftAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     unselectItem(holder.getAdapterPosition());
                 }
             };
-        } catch (Exception ignored){
-
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 
