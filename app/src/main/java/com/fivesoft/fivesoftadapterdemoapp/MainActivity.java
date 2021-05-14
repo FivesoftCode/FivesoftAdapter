@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         adapterData = builder.build();
 
         recyclerView.setAdapter(new FivesoftAdapter(adapterData, this)
-                .setSelectedItemsLimitMode(FivesoftAdapter.ItemSwitchMode.UNSELECT_FIRST)
+                .setItemSwitchMode(FivesoftAdapter.ItemSwitchMode.UNSELECT_FIRST)
                 .setMaxSelectedItemCount(4));
 
         adapterData.attachToRecyclerView(recyclerView);

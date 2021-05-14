@@ -27,6 +27,13 @@ public class FivesoftAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.activity = activity;
     }
 
+    /**
+     * Sets the maximum count of items user can
+     * have selected at the same time.
+     * @param i Maximum count of items.
+     * @return This FivesoftAdapter object.
+     */
+
     public FivesoftAdapter setMaxSelectedItemCount(int i){
         this.maxSelectedItemCount = i;
 
@@ -43,10 +50,21 @@ public class FivesoftAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return this;
     }
 
+    /**
+     * Setups selection behavior when
+     * user is trying to select more items
+     * than {@link #maxSelectedItemCount}
+     */
+
     public FivesoftAdapter setItemSwitchMode(ItemSwitchMode itemSwitchMode){
         this.itemSwitchMode = itemSwitchMode;
         return this;
     }
+
+    /**
+     * Returns all selected items.
+     * @return List of selected items.
+     */
 
     public List<Item> getSelectedItems(){
         List<Item> res = new ArrayList<>();
@@ -58,6 +76,14 @@ public class FivesoftAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return res;
     }
 
+    /**
+     * Returns all items in this adapter.
+     * @return List of all items.
+     */
+
+    public List<Item> getItems(){
+        return items;
+    }
 
     public List<?> getSelectedItemsData(){
         List<?> res = new ArrayList<>();
@@ -122,6 +148,7 @@ public class FivesoftAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         try {
             Item item = items.get(holder.getAdapterPosition());
             item.onViewCreated(((ItemHolder) holder).view, holder, activity);
+            item.onSelectionChanged(item.isSelected);
             item.onItemSelectionChangeListener = isSelected -> {
                 if(isSelected){
                     selectItem(holder.getAdapterPosition());
