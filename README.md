@@ -6,4 +6,4 @@ Easy to use multi-item-type adapter for RecyclerView.
 
 Implementation:
 
-    implementation 'com.github.FivesoftCode:FivesoftAdapter:1.0.0'
+    implementation 'com.github.FivesoftCode:FivesoftAdapter:1.0.1'
