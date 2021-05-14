@@ -146,20 +146,14 @@ public class FivesoftAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         try {
-            int pos;
-            if(holder.getAdapterPosition() < 0 || holder.getAdapterPosition() >= getItemCount()){
-                pos = position;
-            } else {
-                pos = holder.getAdapterPosition();
-            }
-            Item item = items.get(pos);
+            Item item = items.get(choosePosition(holder, position));
             item.onViewCreated(((ItemHolder) holder).view, holder, activity);
             item.onSelectionChanged(item.isSelected);
             item.onItemSelectionChangeListener = isSelected -> {
                 if(isSelected){
-                    selectItem(holder.getAdapterPosition());
+                    selectItem(choosePosition(holder, position));
                 } else {
-                    unselectItem(holder.getAdapterPosition());
+                    unselectItem(choosePosition(holder, position));
                 }
             };
         } catch (Exception e){
@@ -246,6 +240,13 @@ public class FivesoftAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return -1;
     }
 
+    private int choosePosition(RecyclerView.ViewHolder holder, int position){
+        if(holder.getAdapterPosition() < 0 || holder.getAdapterPosition() >= getItemCount()){
+            return position;
+        } else {
+            return holder.getAdapterPosition();
+        }
+    }
 
 
 }
