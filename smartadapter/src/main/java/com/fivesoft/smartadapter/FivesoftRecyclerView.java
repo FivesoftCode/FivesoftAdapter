@@ -30,8 +30,8 @@ public class FivesoftRecyclerView extends RecyclerView {
     }
 
     public FivesoftRecyclerView setAdapter(FivesoftAdapter adapter){
-        adapter.items.attachToRecyclerView(this);
         super.setAdapter(adapter);
+        adapter.items.attachToRecyclerView(this);
         return this;
     }
 

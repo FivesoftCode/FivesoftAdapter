@@ -21,7 +21,7 @@ public abstract class Item {
         this.id = hashCode();
     }
 
-    protected abstract void onViewCreated(View view, RecyclerView.ViewHolder viewHolder, Activity activity);
+    protected abstract void onViewCreated(View view, FivesoftViewHolder viewHolder, Activity activity);
 
     protected abstract void onSelectionChanged(boolean isSelected);
 

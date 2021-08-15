@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FivesoftAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class FivesoftAdapter extends RecyclerView.Adapter<FivesoftViewHolder> {
 
 
     AdapterData<Item> items;
@@ -103,6 +103,12 @@ public class FivesoftAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return res;
     }
 
+    public View bindViewAtPosition(int position, ViewGroup parent){
+        FivesoftViewHolder viewHolder = createViewHolder(parent, getItemViewType(position)).savePosition(position);
+        bindViewHolder(viewHolder, position);
+        return viewHolder.itemView;
+    }
+
     public static class Builder {
 
         private final AdapterData<Item> items = new AdapterData<>();
@@ -139,26 +145,23 @@ public class FivesoftAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int itemType) {
+    public FivesoftViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int itemType) {
         return new ItemHolder(LayoutInflater.from(activity).inflate(itemType, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        try {
-            Item item = items.get(choosePosition(holder, position));
-            item.onViewCreated(((ItemHolder) holder).view, holder, activity);
-            item.onSelectionChanged(item.isSelected);
-            item.onItemSelectionChangeListener = isSelected -> {
-                if(isSelected){
-                    selectItem(choosePosition(holder, position));
-                } else {
-                    unselectItem(choosePosition(holder, position));
-                }
-            };
-        } catch (Exception e){
-            e.printStackTrace();
-        }
+    public void onBindViewHolder(@NonNull FivesoftViewHolder holder, int position) {
+        holder.savePosition(position);
+        Item item = items.get(choosePosition(holder, position));
+        item.onViewCreated(((ItemHolder) holder).view, holder, activity);
+        item.onSelectionChanged(item.isSelected);
+        item.onItemSelectionChangeListener = isSelected -> {
+            if(isSelected){
+                selectItem(choosePosition(holder, position));
+            } else {
+                unselectItem(choosePosition(holder, position));
+            }
+        };
     }
 
     /**
@@ -176,7 +179,7 @@ public class FivesoftAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return items.get(position).viewId;
     }
 
-    private static class ItemHolder extends RecyclerView.ViewHolder {
+    private static class ItemHolder extends FivesoftViewHolder {
 
         public View view;
 

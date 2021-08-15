@@ -53,7 +53,21 @@ public class MainActivity extends AppCompatActivity {
                 .addItem(new SimpleItem("Selection 19", actionListener))
                 .addItem(new SimpleItem("Selection 20", actionListener))
                 .addItem(new SimpleItem("Selection 21", actionListener))
-                .addItem(new SimpleItem("Selection 22", actionListener));
+                .addItem(new SimpleItem("Selection 22", actionListener))
+                .addItem(new SimpleItem("Selection 23", actionListener))
+                .addItem(new SimpleItem("Selection 24", actionListener))
+                .addItem(new SimpleItem("Selection 25", actionListener))
+                .addItem(new SimpleItem("Selection 26", actionListener))
+                .addItem(new SimpleItem("Selection 27", actionListener))
+                .addItem(new SimpleItem("Selection 28", actionListener))
+                .addItem(new SimpleItem("Selection 29", actionListener))
+                .addItem(new SimpleItem("Selection 30", actionListener))
+                .addItem(new SimpleItem("Selection 31", actionListener))
+                .addItem(new SimpleItem("Selection 32", actionListener))
+                .addItem(new SimpleItem("Selection 33", actionListener))
+                .addItem(new SimpleItem("Selection 34", actionListener))
+                .addItem(new SimpleItem("Selection 35", actionListener))
+                .addItem(new SimpleItem("Selection 36", actionListener));
 
         adapterData = builder.build();
 
